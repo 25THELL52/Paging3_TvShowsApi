@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Paging3_TvShowsApi</string>
+
+    <string-array name="status_array">
+        <item>All</item>
+        <item>Running</item>
+        <item>Ended</item>
+
+    </string-array>
+
+    <string-array name="genre_array">
+        <item>All</item>
+        <item>Comedy</item>
+        <item>Drama</item>
+        <item>Family</item>
+        <item>Romance</item>
+        <item>Food</item>
+        <item>Travel</item>
+        <item>History</item>
+        <item>Crime</item>
+        <item>Fantasy</item>
+        <item>Medical</item>
+        <item>Mystery</item>
+        <item>Music</item>
+
+
+
+
+
+
+
+
+
+
+    </string-array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_results">No Results</string>
+</resources>
