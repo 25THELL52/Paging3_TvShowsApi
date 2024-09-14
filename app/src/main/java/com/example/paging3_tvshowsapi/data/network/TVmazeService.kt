@@ -1,4 +1,4 @@
-package com.example.paging3_tvshowsapi.data
+package com.example.paging3_tvshowsapi.data.network
 
 import retrofit2.Response
 import retrofit2.http.GET
@@ -8,7 +8,7 @@ interface TVmazeService {
 
     @GET("/shows")
 
-    suspend fun getTvShows(@Query("page") page:Int): Response<ArrayList<TvShow>>
+    suspend fun getTvShows(@Query("page") page:Int): Response<List<TvShowDto>>
 
 
 

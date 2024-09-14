@@ -92,7 +92,14 @@ dependencies {
     //glide
     implementation (libs.glide)
 
+    //gradle.kts nonsense error
     kapt (libs.compiler)
+
+    //room
+
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.paging)
 
 }
 // Allow references to generated code

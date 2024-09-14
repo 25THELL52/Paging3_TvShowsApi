@@ -1,4 +1,4 @@
-package com.example.paging3_tvshowsapi.data
+package com.example.paging3_tvshowsapi.data.network
 
 data class Country(
     val code: String,

@@ -1,13 +1,13 @@
-package com.example.paging3_tvshowsapi.data
+package com.example.paging3_tvshowsapi.data.network
 
 import com.google.gson.annotations.SerializedName
 
 
-data class TvShow(
-/*
-    @Json(name = "_links")
+data class TvShowDto(
+    /*
+        @Json(name = "_links")
 
- */
+     */
 @SerializedName("_links")
     val links: Links,
     val averageRuntime: Int,

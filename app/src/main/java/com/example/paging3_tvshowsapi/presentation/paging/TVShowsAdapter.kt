@@ -1,13 +1,14 @@
 package com.example.paging3_tvshowsapi.presentation.paging
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.paging3_tvshowsapi.data.TvShow
+import com.example.paging3_tvshowsapi.data.local.TvShow
 import com.example.paging3_tvshowsapi.databinding.TvshowsItemBinding
 import javax.inject.Inject
 
@@ -40,7 +41,11 @@ class TvShowsAdapter @Inject() constructor():
             ratingBr.rating = ((item.rating?.average?.toFloat())?.div(2)) ?: 0.0f
 
                 //coroutineScope.launch() {  }
+
+                Log.e("error tracking","from adapter ${item.image?.medium}")
+
                 Glide.with(context)
+
 
                     .load(item.image?.medium)
                     .override(300, 200)
