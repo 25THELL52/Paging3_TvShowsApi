@@ -1,5 +1,6 @@
 package com.example.paging3_tvshowsapi.presentation.paging
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -34,6 +35,7 @@ class TvShowsAdapter @Inject() constructor():
 
     inner class TvShowsViewHolder() : RecyclerView.ViewHolder(binding.root){
 
+        @SuppressLint("SuspiciousIndentation")
         fun bind(item: TvShow) {
             binding.apply {
             showNameTv.text = item.name
@@ -42,7 +44,6 @@ class TvShowsAdapter @Inject() constructor():
 
                 //coroutineScope.launch() {  }
 
-                Log.e("error tracking","from adapter ${item.image?.medium}")
 
                 Glide.with(context)
 

@@ -10,7 +10,10 @@ object StringImageConverter {
     @JvmStatic
     fun imageToString(image: Image?): String {
         return if (image == null) ""
-        else " ${image.medium} | ${image.original}"
+        else {
+
+            "${image.medium}|${image.original}"
+        }
 
     }
 
@@ -21,7 +24,6 @@ object StringImageConverter {
         else {
 
             val list = string.split("|").toList()
-            Log.e("error tracking",list[0])
             Image(list[0],list[1])
 
         }

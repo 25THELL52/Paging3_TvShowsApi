@@ -18,7 +18,7 @@ import javax.inject.Inject
 class TVShowsViewModel @Inject constructor(private val tvShowsRepository: TvShowsRepository) :
     ViewModel() {
 
-    private val tvShowsStateFlow = MutableStateFlow<Boolean>(false)
+
 
     val tvShows: Flow<PagingData<TvShow>> = tvShowsRepository.getTvShows()
 
