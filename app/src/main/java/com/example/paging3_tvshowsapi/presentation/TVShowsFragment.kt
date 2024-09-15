@@ -56,6 +56,7 @@ class TVShowsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+     // viewLifecycleOwner.lifecycleScope.launch{        tvShowsDatabase.getTvShowsDAO().deleteAll() }
         binding.apply {
             tvShows.adapter = adapter
             tvShows.layoutManager = LinearLayoutManager(requireContext())
@@ -67,16 +68,16 @@ class TVShowsFragment : Fragment() {
 
 
                     if (it.refresh is LoadState.NotLoading) {
-                        tvShows.scrollToPosition(0)
+                        //tvShows.scrollToPosition(0)
                         noresultsTv.isVisible = adapter.itemCount == 0
                         // https://www.reddit.com/r/androiddev/comments/lb7ys6/scrolling_up_after_refresh_with_pagingdataadapter/
-                        Log.e("track error", "scroll to 0")
+                        //Log.e("track error", "scroll to 0")
 
 
                     }
                     loadingPg.isVisible = it.refresh is LoadState.Loading
-                    tvShows.isVisible = it.source.refresh is LoadState.NotLoading
-
+                    //tvShows.isVisible = it.source.refresh is LoadState.NotLoading
+                    tvShows.isVisible = true
 
                 }
             }
