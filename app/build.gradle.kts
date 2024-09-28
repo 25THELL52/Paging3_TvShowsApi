@@ -94,6 +94,9 @@ dependencies {
 
     kapt (libs.compiler)
 
+    //swipe layout
+    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
 }
 // Allow references to generated code
 kapt {

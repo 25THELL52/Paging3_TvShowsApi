@@ -6,17 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.paging3_tvshowsapi.presentation.TVShowsFragment">
 
-    <TextView
-        android:id="@+id/noresults_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/no_results"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="invisible"
-        app:layout_constraintVertical_bias="0.5" />
+
 
     <ProgressBar
         android:id="@+id/loading_pg"
@@ -30,57 +20,57 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
 
-    <SearchView
-        android:id="@+id/searchview"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:iconifiedByDefault="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-    </SearchView>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
-    <LinearLayout
-        android:id="@+id/filters"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchview"
-        tools:layout_editor_absoluteX="403dp"
-        tools:layout_editor_absoluteY="8dp">
-
-
-        <Spinner
-            android:id="@+id/status_sp"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-
-            />
-
-        <Spinner
-            android:id="@+id/genre_sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-
-            />
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tvShows"
+        android:id="@+id/tv_shows_swipe_to_refresh_lt"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="8dp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toTopOf="@id/online_status_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <!--on below line we are creating a
+            recycler view for displaying our courses-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tvShows"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+
+            app:layout_constraintVertical_bias="0.562" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <Button
+        android:id="@+id/retry_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/retry"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filters" />
+
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/online_status_tv"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
