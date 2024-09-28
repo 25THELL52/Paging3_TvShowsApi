@@ -1,4 +1,4 @@
-package com.example.paging3_tvshowsapi.data.network
+package com.example.paging3_tvshowsapi.data.network.model
 
 import com.google.gson.annotations.SerializedName
 

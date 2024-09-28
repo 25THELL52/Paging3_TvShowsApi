@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Paging3_TvShowsApi</string>
 
+    <string name="retry">Retry</string>
+
     <string-array name="status_array">
         <item>All</item>
         <item>Running</item>

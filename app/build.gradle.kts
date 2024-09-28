@@ -101,7 +101,16 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.paging)
 
+
+
+
+// swiperefreshlayout
+    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
 }
+
+
+
 // Allow references to generated code
 kapt {
     correctErrorTypes = true

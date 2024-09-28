@@ -3,10 +3,13 @@ package com.example.paging3_tvshowsapi.data.di
 import android.content.Context
 import androidx.room.Room
 import com.example.paging3_tvshowsapi.data.local.TvShowsDatabase
-import com.example.paging3_tvshowsapi.data.network.TVmazeService
-import com.example.paging3_tvshowsapi.data.network.TvShowsRepositoryImpl
+ import com.example.paging3_tvshowsapi.data.TvShowsRepositoryImpl
+import com.example.paging3_tvshowsapi.data.network.TvMazeService
+import com.example.paging3_tvshowsapi.domain.SharedPreferencesHelper
 import com.example.paging3_tvshowsapi.domain.TvShowsRepository
 import com.example.paging3_tvshowsapi.presentation.paging.TvShowsAdapter
+import com.example.paging3_tvshowsapi.util.networkTracker.NetworkConnectivityService
+import com.example.paging3_tvshowsapi.util.networkTracker.NetworkConnectivityServiceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,25 +37,28 @@ class AppModule {
     @Singleton
     @Provides
 
-    fun providesTvShowRepository(tvMazeService: TVmazeService, tvShowsDatabase: TvShowsDatabase): TvShowsRepository {
-        return TvShowsRepositoryImpl(tvMazeService,tvShowsDatabase)
+    fun providesTvShowRepository(
+        tvMazeService: TvMazeService,
+        tvShowsDatabase: TvShowsDatabase
+    ): TvShowsRepository {
+        return TvShowsRepositoryImpl(tvMazeService, tvShowsDatabase)
     }
 
     @Singleton
     @Provides
-    fun providesTVmazeService(retrofit: Retrofit): TVmazeService {
+    fun providesTvMazeService(retrofit: Retrofit): TvMazeService {
 
 
-        return retrofit.create(TVmazeService::class.java)
+        return retrofit.create(TvMazeService::class.java)
 
     }
 
     @Singleton
     @Provides
-    fun providesRetrofit(BaseUrl: String, client: OkHttpClient): Retrofit {
+    fun providesRetrofit(baseUrl: String, client: OkHttpClient): Retrofit {
 
         return Retrofit.Builder()
-            .baseUrl(BaseUrl)
+            .baseUrl(baseUrl)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -81,7 +87,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun providesTvShowsDatabase(@ApplicationContext context: Context):TvShowsDatabase {
+    fun providesTvShowsDatabase(@ApplicationContext context: Context): TvShowsDatabase {
 
         return Room.databaseBuilder(
             context,
@@ -89,4 +95,20 @@ class AppModule {
         ).build()
 
     }
+
+    @Singleton
+    @Provides
+    fun providesSharedPreferencesHelper(@ApplicationContext context: Context): SharedPreferencesHelper {
+
+        return SharedPreferencesHelper(context)
+
+    }
+
+
+    @Singleton
+    @Provides
+    fun providesNetworkConnectivityService(@ApplicationContext context: Context): NetworkConnectivityService =
+        NetworkConnectivityServiceImpl(context)
+
+
 }

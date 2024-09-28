@@ -1,8 +1,7 @@
 package com.example.paging3_tvshowsapi.data.local
 
-import android.util.Log
 import androidx.room.TypeConverter
-import com.example.paging3_tvshowsapi.data.network.Image
+import com.example.paging3_tvshowsapi.data.network.model.Image
 
 object StringImageConverter {
 

@@ -1,7 +1,7 @@
 package com.example.paging3_tvshowsapi.data
 
 import com.example.paging3_tvshowsapi.data.local.TvShow
-import com.example.paging3_tvshowsapi.data.network.TvShowDto
+import com.example.paging3_tvshowsapi.data.network.model.TvShowDto
 
 
 fun TvShowDto.toTvShow(): TvShow {

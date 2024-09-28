@@ -3,8 +3,8 @@ package com.example.paging3_tvshowsapi.data.local
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.paging3_tvshowsapi.data.network.Image
-import com.example.paging3_tvshowsapi.data.network.Rating
+import com.example.paging3_tvshowsapi.data.network.model.Image
+import com.example.paging3_tvshowsapi.data.network.model.Rating
 
 @Entity(tableName = "tv_shows")
 data class TvShow(
@@ -18,7 +18,7 @@ data class TvShow(
     val language : String?,
 
     @ColumnInfo("Rating")
-    val rating:Rating?,
+    val rating: Rating?,
 
     @ColumnInfo(name="Image")
     val image: Image?

@@ -5,7 +5,9 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.LoadStateAdapter
 import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -13,8 +15,8 @@ import com.example.paging3_tvshowsapi.data.local.TvShow
 import com.example.paging3_tvshowsapi.databinding.TvshowsItemBinding
 import javax.inject.Inject
 
-class TvShowsAdapter @Inject() constructor():
-    PagingDataAdapter<TvShow, TvShowsAdapter.TvShowsViewHolder>(differCallback){
+class TvShowsAdapter()  :
+    PagingDataAdapter<TvShow, TvShowsAdapter.TvShowsViewHolder>(differCallback) {
 
     private lateinit var binding: TvshowsItemBinding
     private lateinit var context: Context
@@ -32,15 +34,14 @@ class TvShowsAdapter @Inject() constructor():
     }
 
 
-
-    inner class TvShowsViewHolder() : RecyclerView.ViewHolder(binding.root){
+    inner class TvShowsViewHolder() : RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SuspiciousIndentation")
         fun bind(item: TvShow) {
             binding.apply {
-            showNameTv.text = item.name
-            languageTv.text = item.language
-            ratingBr.rating = ((item.rating?.average?.toFloat())?.div(2)) ?: 0.0f
+                showNameTv.text = item.name
+                languageTv.text = item.language
+                ratingBr.rating = ((item.rating?.average?.toFloat())?.div(2)) ?: 0.0f
 
                 //coroutineScope.launch() {  }
 
@@ -53,14 +54,13 @@ class TvShowsAdapter @Inject() constructor():
                     .into(imageView)
 
             }
+        }
     }
-}
 
-companion object
-    {
+    companion object {
         val differCallback = object : DiffUtil.ItemCallback<TvShow>() {
             override fun areItemsTheSame(oldItem: TvShow, newItem: TvShow): Boolean {
-                return oldItem.id   == newItem.id
+                return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(oldItem: TvShow, newItem: TvShow): Boolean {
@@ -68,7 +68,7 @@ companion object
             }
         }
     }
-    }
+}
 
 
 
