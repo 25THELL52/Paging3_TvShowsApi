@@ -176,7 +176,6 @@ class TVShowsFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             tvShowsViewModel.tvShows.collectLatest {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
 
 
                     Log.e("track error", "data submitted to adapter")
@@ -192,7 +191,7 @@ class TVShowsFragment : Fragment() {
                     )
 
 
-                }
+
             }
 
 
@@ -202,12 +201,11 @@ class TVShowsFragment : Fragment() {
 
 
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
 
                 tvShowsViewModel._previousNetworkStatus.collectLatest {
                     previousNetworkStatus = it
                 }
-            }
+
         }
 
 
