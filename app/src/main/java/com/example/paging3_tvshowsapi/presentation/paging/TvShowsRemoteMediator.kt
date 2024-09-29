@@ -1,14 +1,7 @@
 package com.example.paging3_tvshowsapi.presentation.paging
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
-import android.net.NetworkInfo
-import android.net.http.HttpException
-import android.os.Build
+
 import android.util.Log
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState

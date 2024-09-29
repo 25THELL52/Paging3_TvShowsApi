@@ -2,18 +2,14 @@ package com.example.paging3_tvshowsapi.presentation.paging
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.LoadStateAdapter
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.paging3_tvshowsapi.data.local.TvShow
 import com.example.paging3_tvshowsapi.databinding.TvshowsItemBinding
-import javax.inject.Inject
 
 class TvShowsAdapter()  :
     PagingDataAdapter<TvShow, TvShowsAdapter.TvShowsViewHolder>(differCallback) {

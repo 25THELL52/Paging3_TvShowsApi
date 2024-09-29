@@ -12,7 +12,7 @@ import com.example.paging3_tvshowsapi.presentation.paging.TvShowsRemoteMediator
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class TvShowsRepositoryImpl @Inject constructor(private val tvmazeService: TvMazeService,
+class TvShowsRepositoryImpl @Inject constructor(private val tvMazeService: TvMazeService,
                                                 private val tvShowsDatabase: TvShowsDatabase) : TvShowsRepository {
     @OptIn(ExperimentalPagingApi::class)
     override fun getTvShows(): Flow<PagingData<TvShow>> {
@@ -20,7 +20,7 @@ class TvShowsRepositoryImpl @Inject constructor(private val tvmazeService: TvMaz
 
         return Pager(
             config = PagingConfig(pageSize = 250, initialLoadSize = 250),
-            remoteMediator = TvShowsRemoteMediator(tvmazeService,tvShowsDatabase))
+            remoteMediator = TvShowsRemoteMediator(tvMazeService,tvShowsDatabase))
         { tvShowsDatabase.getTvShowsDAO().getTvShows() }.flow
 
 
