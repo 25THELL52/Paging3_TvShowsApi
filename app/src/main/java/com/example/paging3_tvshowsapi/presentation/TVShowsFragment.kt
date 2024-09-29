@@ -25,8 +25,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.paging3_tvshowsapi.R
-//import com.example.paging3_tvshowsapi.R
+
 
 import com.example.paging3_tvshowsapi.databinding.FragmentTvShowsBinding
 import com.example.paging3_tvshowsapi.presentation.paging.TvShowsAdapter
@@ -57,7 +56,6 @@ class TVShowsFragment : Fragment() {
     private lateinit var binding: FragmentTvShowsBinding
     private lateinit var previousNetworkStatus: NetworkStatus
 
-    private var tvShowsItemCount = 0
 
     @Inject
     lateinit var adapter: TvShowsAdapter
@@ -91,7 +89,7 @@ class TVShowsFragment : Fragment() {
 
                 Log.e("track isadapterautorefreshed", "inside adapter load state listener")
 
-                if (tvShowsItemCount == 0) {
+                if (adapter.itemCount == 0) {
 
                     //header.loadState = loadStates.refresh
                     loadingPg.isVisible = loadStates.refresh is LoadState.Loading
@@ -100,7 +98,7 @@ class TVShowsFragment : Fragment() {
 
                 }
 
-                if (tvShowsItemCount != 0) {
+                if (adapter.itemCount != 0) {
 
                     tvShowsSwipeToRefreshLt.isVisible = true
                     Log.e("track internet", "${networkConnectivityService.checkForInternet()}")
@@ -185,6 +183,7 @@ class TVShowsFragment : Fragment() {
                     Log.e(
                         "track error", "data item count after submission: ${binding.tvShows.size} "
                     )
+                    //adapter.notifyDataSetChanged()
 
                     adapter.submitData(it)
 
@@ -193,17 +192,13 @@ class TVShowsFragment : Fragment() {
                     )
 
 
-                }
+
             }
 
 
-
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            tvShowsViewModel.tvShowsItemCount.collectLatest {
-                tvShowsItemCount = it
-            }
         }
+
+
 
 
         viewLifecycleOwner.lifecycleScope.launch {
