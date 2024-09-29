@@ -16,15 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.Paging3TvShowsApi"
         tools:targetApi="31">
+
         <activity
             android:name="com.example.paging3_tvshowsapi.presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
     </application>
 
 </manifest>
